@@ -12,7 +12,10 @@ public class Graf
         //setez dimensiunea ferestrei
         f.setSize(500, 500);
         //fac fereastra vizibila
+       // f.pack(); - daca vreau sa arate minuscula
+        f.setLocationRelativeTo(null);
         f.setVisible(true);
+
     }
 	
 	public static void main(String[] args)
