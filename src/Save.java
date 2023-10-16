@@ -36,7 +36,7 @@ public class Save{
             writer.write(Integer.toString(size) + "\n");
             for(int[] row : mat){
                 for(int elem : row)
-                    writer.write(Integer.toString(elem));
+                    writer.write(Integer.toString(elem) + " ");
                 writer.write("\n");
             }
             writer.close();

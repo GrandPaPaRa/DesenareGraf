@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class MyPanel extends JPanel {
 	private int nodeNr = 1;
-	private int node_diam = 30;
+	public static int node_diam = 30;
 	private Vector<Node> listaNoduri;
 	private Vector<Arc> listaArce;
 	private Save save;
@@ -92,7 +92,7 @@ public class MyPanel extends JPanel {
 
 	//metoda care se apeleaza la eliberarea mouse-ului
 	private void addNode(int x, int y) {
-		if(!checkColisionNode(x, y, node_diam))
+		if(!checkColisionNode(x, y, node_diam + 10))
 			return;
 		Node node = new Node(x, y, nodeNr);
 		listaNoduri.add(node);
@@ -105,7 +105,7 @@ public class MyPanel extends JPanel {
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);//apelez metoda paintComponent din clasa de baza
-		g.drawString("This is my Graph!", 10, 20);
+		g.drawString("TopG B Color!?", 10, 20);
 		//deseneaza arcele existente in lista
 		/*for(int i=0;i<listaArce.size();i++)
 		{
@@ -114,12 +114,14 @@ public class MyPanel extends JPanel {
 		for (Arc a : listaArce)
 		{
 			a.drawArc(g);
+			a.drawArrowLine(g);
 		}
 		//deseneaza arcul curent; cel care e in curs de desenare
 		if (pointStart != null)
 		{
 			g.setColor(Color.RED);
 			g.drawLine(pointStart.x, pointStart.y, pointEnd.x, pointEnd.y);
+			Arc.drawArrowLine(g,pointStart.x,pointStart.y,pointEnd.x, pointEnd.y,7,7);
 		}
 		//deseneaza lista de noduri
 		for(int i=0; i<listaNoduri.size(); i++)
