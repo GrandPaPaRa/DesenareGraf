@@ -14,6 +14,7 @@ public class MyPanel extends JPanel {
 	private int node_diam = 30;
 	private Vector<Node> listaNoduri;
 	private Vector<Arc> listaArce;
+	private Save save;
 	Point pointStart = null;
 	Point pointEnd = null;
 	boolean isDragging = false;
@@ -21,6 +22,7 @@ public class MyPanel extends JPanel {
 	{
 		listaNoduri = new Vector<Node>();
 		listaArce = new Vector<Arc>();
+		save = new Save("adiacent.txt");
 		// borderul panel-ului
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		addMouseListener(new MouseAdapter() {
@@ -39,8 +41,11 @@ public class MyPanel extends JPanel {
 					checkColisionNode((int)pointEnd.getX(), (int)pointEnd.getY(), node_diam/2))) {
 						pointStart = Objects.requireNonNull(returnNodeFromPoint((int) pointStart.getX(), (int) pointStart.getY())).getPoint();
 						pointEnd = Objects.requireNonNull(returnNodeFromPoint((int) pointEnd.getX(), (int) pointEnd.getY())).getPoint();
-						Arc arc = new Arc(pointStart, pointEnd);
-						listaArce.add(arc);
+						if(!checkIfArcExist(pointStart, pointEnd)){
+							Arc arc = new Arc(pointStart, pointEnd);
+							listaArce.add(arc);
+							save.saveNonOriented(listaArce,listaNoduri);
+						}
 					}
 					repaint();
 				}
@@ -77,6 +82,13 @@ public class MyPanel extends JPanel {
 		}
 		return null; //nu s-a gasit punctul in vecinatatea niciunui nod
 	}
+	private boolean checkIfArcExist(Point start, Point end){
+		for(Arc it : listaArce){
+			if(it.getStart().equals(start) && it.getEnd().equals(end))
+				return true;
+		}
+		return false;
+	}
 
 	//metoda care se apeleaza la eliberarea mouse-ului
 	private void addNode(int x, int y) {
@@ -85,6 +97,7 @@ public class MyPanel extends JPanel {
 		Node node = new Node(x, y, nodeNr);
 		listaNoduri.add(node);
 		nodeNr++;
+		save.saveNonOriented(listaArce,listaNoduri);
 		repaint();
 	}
 	

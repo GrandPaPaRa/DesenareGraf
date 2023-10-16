@@ -12,7 +12,10 @@ public class Arc
 		this.start = start;
 		this.end = end;
 	}
-	
+
+	public Point getStart(){return start;}
+	public Point getEnd(){return end;}
+
 	public void drawArc(Graphics g)
 	{
 		if (start != null)

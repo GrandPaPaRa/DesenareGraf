@@ -15,8 +15,7 @@ public class Node
 		this.coordY = coordY;
 		this.number = number;
 	}
-	public Node(){}
-	
+
 	public int getCoordX() {
 		return coordX;
 	}
