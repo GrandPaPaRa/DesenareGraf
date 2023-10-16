@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
 
 public class Node
 {
@@ -14,6 +15,7 @@ public class Node
 		this.coordY = coordY;
 		this.number = number;
 	}
+	public Node(){}
 	
 	public int getCoordX() {
 		return coordX;
@@ -33,6 +35,7 @@ public class Node
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	public Point getPoint(){return new Point(this.coordX, this.coordY);}
 
 	public void drawNode(Graphics g, int node_diam)
 	{
@@ -46,4 +49,5 @@ public class Node
         else
         	g.drawString(((Integer)number).toString(), coordX+8 - node_diam / 2, coordY+20 - node_diam / 2);
 	}
+
 }

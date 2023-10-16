@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Objects;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -36,6 +37,8 @@ public class MyPanel extends JPanel {
 				else {
 					if(!(checkColisionNode((int)pointStart.getX(), (int)pointStart.getY(), node_diam/2) ||
 					checkColisionNode((int)pointEnd.getX(), (int)pointEnd.getY(), node_diam/2))) {
+						pointStart = Objects.requireNonNull(returnNodeFromPoint((int) pointStart.getX(), (int) pointStart.getY())).getPoint();
+						pointEnd = Objects.requireNonNull(returnNodeFromPoint((int) pointEnd.getX(), (int) pointEnd.getY())).getPoint();
 						Arc arc = new Arc(pointStart, pointEnd);
 						listaArce.add(arc);
 					}
@@ -66,6 +69,15 @@ public class MyPanel extends JPanel {
 		}
 		return true;
 	}
+
+	private Node returnNodeFromPoint(int targetX, int targetY){
+		for(Node it:listaNoduri){
+			if((float)Math.sqrt(Math.pow(targetX - it.getCoordX(), 2) + Math.pow(targetY - it.getCoordY(), 2)) <= node_diam)
+				return it;
+		}
+		return null; //nu s-a gasit punctul in vecinatatea niciunui nod
+	}
+
 	//metoda care se apeleaza la eliberarea mouse-ului
 	private void addNode(int x, int y) {
 		if(!checkColisionNode(x, y, node_diam))
