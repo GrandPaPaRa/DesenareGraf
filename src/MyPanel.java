@@ -105,7 +105,7 @@ public class MyPanel extends JPanel {
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);//apelez metoda paintComponent din clasa de baza
-		g.drawString("TopG B Color!?", 10, 20);
+		//g.drawString("TopG B Color!?", 10, 20);
 		//deseneaza arcele existente in lista
 		/*for(int i=0;i<listaArce.size();i++)
 		{
