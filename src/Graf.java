@@ -9,16 +9,16 @@ public class Graf
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //imi creez ob MyPanel
         f.setLayout(new BorderLayout());
-
-        f.add(new MyPanel(), BorderLayout.CENTER);
+        MyPanel myPanel = new MyPanel();
+        f.add(myPanel, BorderLayout.CENTER);
         //setez dimensiunea ferestrei
         f.setSize(500, 500);
         //fac fereastra vizibila
        // f.pack(); - daca vreau sa arate minuscula
         //setez butoanele
         JPanel bPanel = new JPanel();
-        Button unOrdered = new Button("Neorientat", 0,0,100,50);
-        Button ordered = new Button("Orientat", 0,0,100,50);
+        Button unOrdered = new Button("Neorientat", 0,0,100,50, myPanel);
+        Button ordered = new Button("Orientat", 0,0,100,50, myPanel);
         ordered.ordered();
         unOrdered.unOrdered();
         bPanel.add(unOrdered);

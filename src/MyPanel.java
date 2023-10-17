@@ -10,14 +10,29 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class MyPanel extends JPanel {
+	enum State{
+		ORDERED,
+		UNORDERED
+	}
 	private int nodeNr = 1;
 	public static int node_diam = 30;
+	public static State state = State.UNORDERED;
 	private Vector<Node> listaNoduri;
 	private Vector<Arc> listaArce;
 	private Save save;
 	Point pointStart = null;
 	Point pointEnd = null;
 	boolean isDragging = false;
+	//getters
+	public Vector<Node> getVectorNode(){
+		return listaNoduri;
+	}
+	public Vector<Arc> getListaArce(){
+		return listaArce;
+	}
+	public Save getSave(){
+		return save;
+	}
 	public MyPanel()
 	{
 		listaNoduri = new Vector<Node>();
@@ -44,7 +59,7 @@ public class MyPanel extends JPanel {
 						if(!checkIfArcExist(pointStart, pointEnd)){
 							Arc arc = new Arc(pointStart, pointEnd);
 							listaArce.add(arc);
-							save.saveNonOriented(listaArce,listaNoduri);
+							save.save(listaArce,listaNoduri);
 						}
 					}
 					repaint();
@@ -97,7 +112,7 @@ public class MyPanel extends JPanel {
 		Node node = new Node(x, y, nodeNr);
 		listaNoduri.add(node);
 		nodeNr++;
-		save.saveNonOriented(listaArce,listaNoduri);
+		save.save(listaArce,listaNoduri);
 		repaint();
 	}
 	
@@ -114,14 +129,15 @@ public class MyPanel extends JPanel {
 		for (Arc a : listaArce)
 		{
 			a.drawArc(g);
-			a.drawArrowLine(g);
+			//a.drawArrowLine(g);
 		}
 		//deseneaza arcul curent; cel care e in curs de desenare
 		if (pointStart != null)
 		{
 			g.setColor(Color.RED);
 			g.drawLine(pointStart.x, pointStart.y, pointEnd.x, pointEnd.y);
-			Arc.drawArrowLine(g,pointStart.x,pointStart.y,pointEnd.x, pointEnd.y,7,7);
+			if(state == State.ORDERED)
+				Arc.drawArrowLine(g,pointStart.x,pointStart.y,pointEnd.x, pointEnd.y,7,7);
 		}
 		//deseneaza lista de noduri
 		for(int i=0; i<listaNoduri.size(); i++)

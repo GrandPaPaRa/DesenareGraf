@@ -22,6 +22,8 @@ public class Arc
 		{
             g.setColor(Color.RED);
             g.drawLine(start.x, start.y, end.x, end.y);
+			if(MyPanel.state == MyPanel.State.ORDERED)
+				drawArrowLine(g);
         }
 	}
 	/*
@@ -30,7 +32,7 @@ public class Arc
 		//m : n 7 : 10
 		Point arrowBody = new Point((int)Math.round((7.0f* end.x + 10.0f* start.x)/17.0f),(int)Math.round((7.0f * end.y + 10.0f * start.y)/17.0));
 	}*/
-	public void drawArrowLine(Graphics g) {
+	private void drawArrowLine(Graphics g) {
 		float ratio = (float)(MyPanel.node_diam/2)/(float)Math.sqrt((Math.pow(start.x - end.x,2) + Math.pow(start.y - end.y,2)));
 		Point arrowHead = new Point((int)Math.round((1-ratio)*end.x + ratio*start.x),(int)Math.round((1-ratio)*end.y + ratio * start.y));
 		int dx = arrowHead.x - start.x, dy = arrowHead.y - start.y;

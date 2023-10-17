@@ -45,7 +45,7 @@ public class Save{
         }
 
     }
-    public void saveNonOriented(Vector<Arc> arcList, Vector<Node> nodeList){
+    public void save(Vector<Arc> arcList, Vector<Node> nodeList){
         int i,j;
         int[][] mat = new int[nodeList.size()][nodeList.size()];
         for(int[] row : mat)
@@ -53,7 +53,9 @@ public class Save{
         for(Arc it : arcList){
             i = pointToIndex(it.getStart(), nodeList);
             j = pointToIndex(it.getEnd(), nodeList);
-            mat[i][j] = mat[j][i] = 1;
+            mat[i][j] = 1;
+            if(MyPanel.state == MyPanel.State.UNORDERED)
+                mat[j][i] = 1;
         }
 
         write(mat,nodeList.size());
