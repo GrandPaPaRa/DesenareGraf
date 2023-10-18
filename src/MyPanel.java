@@ -191,7 +191,6 @@ public class MyPanel extends JPanel {
 		for (Arc a : listaArce)
 		{
 			a.drawArc(g);
-			//a.drawArrowLine(g);
 		}
 		//deseneaza arcul curent; cel care e in curs de desenare
 		if (pointStart != null && moveState == MoveState.PLACE)
