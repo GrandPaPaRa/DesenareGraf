@@ -38,15 +38,16 @@ public class Node
 
 	public void drawNode(Graphics g, int node_diam)
 	{
-		g.setColor(Color.RED);
-		g.setFont(new Font("TimesRoman", Font.BOLD, 15));
+		g.setColor(Color.ORANGE);
+		g.setFont(new Font("TimesRoman", Font.BOLD, 18));
+
         g.fillOval(coordX - node_diam / 2, coordY - node_diam / 2, node_diam , node_diam);
         g.setColor(Color.WHITE);
         g.drawOval(coordX - node_diam / 2, coordY - node_diam / 2, node_diam, node_diam);
         if(number < 10)
-        	g.drawString(((Integer)number).toString(), coordX+12 - node_diam / 2, coordY+20 - node_diam / 2);
+        	g.drawString(((Integer)number).toString(), coordX+17 - node_diam / 2, coordY+28 - node_diam / 2);
         else
-        	g.drawString(((Integer)number).toString(), coordX+8 - node_diam / 2, coordY+20 - node_diam / 2);
+        	g.drawString(((Integer)number).toString(), coordX+12 - node_diam / 2, coordY+28 - node_diam / 2);
 	}
 
 }

@@ -29,8 +29,11 @@ public class Arc
 		{
             g.setColor(Color.RED);
             g.drawLine(start.x, start.y, end.x, end.y);
-			if(MyPanel.state == MyPanel.State.ORDERED)
+			if(MyPanel.state == MyPanel.State.ORDERED){
+				g.setColor(Color.BLACK);
 				drawArrowLine(g);
+			}
+
         }
 	}
 	/*
@@ -44,7 +47,7 @@ public class Arc
 		Point arrowHead = new Point((int)Math.round((1-ratio)*end.x + ratio*start.x),(int)Math.round((1-ratio)*end.y + ratio * start.y));
 		int dx = arrowHead.x - start.x, dy = arrowHead.y - start.y;
 		double D = Math.sqrt(dx*dx + dy*dy);
-		double xm = D - 7, xn = xm, ym = 7, yn = -7, x;
+		double xm = D - 10, xn = xm, ym = 10, yn = -10, x;
 		double sin = dy / D, cos = dx / D;
 
 		x = xm*cos - ym*sin + start.x;
@@ -59,6 +62,7 @@ public class Arc
 		int[] ypoints = {arrowHead.y, (int) ym, (int) yn};
 
 		//g.drawLine(start.x, start.y, arrowHead.x, arrowHead.y);
+		g.setColor(Color.BLACK);
 		g.fillPolygon(xpoints, ypoints, 3);
 	}
 	public static void drawArrowLine(Graphics g, int x1, int y1, int x2, int y2, int d, int h) {
@@ -78,7 +82,8 @@ public class Arc
 		int[] xpoints = {x2, (int) xm, (int) xn};
 		int[] ypoints = {y2, (int) ym, (int) yn};
 
-		g.drawLine(x1, y1, x2, y2);
+
+		g.setColor(Color.BLACK);
 		g.fillPolygon(xpoints, ypoints, 3);
 	}
 }

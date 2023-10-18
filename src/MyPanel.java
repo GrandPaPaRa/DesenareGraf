@@ -19,7 +19,7 @@ public class MyPanel extends JPanel {
 		GRAB
 	}
 	private int nodeNr = 1;
-	public static int node_diam = 30;
+	public static int node_diam = 43;
 	public static State state = State.UNORDERED;
 	public static MoveState moveState = MoveState.PLACE;
 	private Vector<Node> listaNoduri;
@@ -199,7 +199,9 @@ public class MyPanel extends JPanel {
 			g.setColor(Color.RED);
 			g.drawLine(pointStart.x, pointStart.y, pointEnd.x, pointEnd.y);
 			if(state == State.ORDERED)
-				Arc.drawArrowLine(g,pointStart.x,pointStart.y,pointEnd.x, pointEnd.y,7,7);
+				Arc.drawArrowLine(g,pointStart.x,pointStart.y,pointEnd.x, pointEnd.y,10,10);
+
+
 		}
 		//deseneaza lista de noduri
 		for(int i=0; i<listaNoduri.size(); i++)
