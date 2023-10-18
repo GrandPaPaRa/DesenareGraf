@@ -15,7 +15,14 @@ public class Arc
 
 	public Point getStart(){return start;}
 	public Point getEnd(){return end;}
-
+	public void setStart(int x, int y){
+		this.start.x = x;
+		this.start.y = y;
+	}
+	public void setEnd(int x, int y){
+		this.end.x = x;
+		this.end.y = y;
+	}
 	public void drawArc(Graphics g)
 	{
 		if (start != null)

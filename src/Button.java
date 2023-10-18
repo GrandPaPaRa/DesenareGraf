@@ -29,6 +29,20 @@ public class Button extends JButton{
             }
         });
     }
-
-
+    public void place(){
+        addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("place");
+                MyPanel.moveState = MyPanel.MoveState.PLACE;
+            }
+        });
+    }
+    public void grab(){
+        addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("grab");
+                MyPanel.moveState = MyPanel.MoveState.GRAB;
+            }
+        });
+    }
 }
