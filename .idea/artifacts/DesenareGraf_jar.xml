@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DesenareGraf:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DesenareGraf_jar</output-path>
+    <root id="archive" name="DesenareGraf.jar">
+      <element id="module-output" name="DesenareGraf" />
+    </root>
+  </artifact>
+</component>
